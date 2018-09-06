@@ -97,3 +97,39 @@ public class GrafoMatrizIncidencia {
 		arcosNaoOrientado();
 	}
 }
+
+private void arcosNaoOrientado() {
+        for (int i = 0; i < qtdeVertice; i++) {
+            int par1 = Integer.MIN_VALUE;
+            int par2 = Integer.MIN_VALUE;
+            int cont = 0;
+            for (int j = 0; j < qtdeArestas; j++) {
+                if (matrizIncidencia[i][j] == 1) {
+                    cont++;
+                    par1 = i + 1;
+                } else if (matrizIncidencia[i][j] == 1 && cont > 0) {
+                    par2 = i + 1;
+                }
+            }
+            if (par1 != Integer.MIN_VALUE && par2 != Integer.MIN_VALUE) {
+                System.out.printf("(%d, %d)\n", par1, par2);
+            }
+        }
+    }
+
+    public int getQtdeVertice() {
+        return qtdeVertice;
+    }
+
+    public void setQtdeVertice(int qtdeVertice) {
+        this.qtdeVertice = qtdeVertice;
+    }
+
+    public int getQtdeArestas() {
+        return qtdeArestas;
+    }
+
+    public void setQtdeArestas(int qtdeArestas) {
+        this.qtdeArestas = qtdeArestas;
+    }
+}

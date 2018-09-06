@@ -96,7 +96,6 @@ public class GrafoMatrizIncidencia {
 		System.out.println("------------------------\n");
 		arcosNaoOrientado();
 	}
-}
 
 private void arcosNaoOrientado() {
         for (int i = 0; i < qtdeVertice; i++) {

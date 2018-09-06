@@ -1,5 +1,3 @@
-package matriz;
-
 import java.util.Scanner;
 
 public class GrafoMatrizIncidencia {

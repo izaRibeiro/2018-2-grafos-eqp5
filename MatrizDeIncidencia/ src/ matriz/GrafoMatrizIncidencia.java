@@ -15,7 +15,7 @@ public class GrafoMatrizIncidencia {
 		for (int i = 0; i < qtdeVertice; i++) {
 			for (int j = 0; j < qtdeArestas; j++) {
 				System.out.printf("Vertice %d se liga com a aresta %d\n", i + 1, j + 1);
-				System.out.println("s - sim | n - não");
+				System.out.println("s - sim | n - nÃ£o");
 				char op = scanner.next().charAt(0);
 				switch (op) {
 				case 's':
@@ -37,7 +37,7 @@ public class GrafoMatrizIncidencia {
 			for (int j = 0; j < qtdeArestas; j++) {
 				if (matrizIncidencia[i][j] == 0) {
 					System.out.printf("Vertice %d parte para outro vertice com  a aresta %d?\n", i + 1, j + 1);
-					System.out.println("s - sim | n - não");
+					System.out.println("s - sim | n - nÃ£o");
 					char op = scanner.next().charAt(0);
 					switch (op) {
 					case 's':
@@ -53,9 +53,5 @@ public class GrafoMatrizIncidencia {
 				}
 			}
 		}
-	}
-	private void pegarInformacao() {
-		// TODO Auto-generated method stub
-		
 	}
 }

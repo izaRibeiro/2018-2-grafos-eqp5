@@ -54,4 +54,46 @@ public class GrafoMatrizIncidencia {
 			}
 		}
 	}
+	
+	private void pegarInformacao() {
+		System.out.println("Informe quantidade de vertices: ");
+		qtdeVertice = scanner.nextInt();
+		System.out.println("Informe quantidade de arestas: ");
+		qtdeArestas = scanner.nextInt();
+	}
+
+	public void imprimirMatriz() {
+		if (matrizIncidencia != null) {
+			for (int i = 0; i < qtdeVertice; i++) {
+				for (int j = 0; j < qtdeArestas; j++) {
+					System.out.print(matrizIncidencia[i][j] + "\t");
+				}
+				System.out.println();
+			}
+		} else {
+			System.err.println("Matriz ainda não existe, criar uma.");
+		}
+	}
+
+	public void info() {
+		System.out.println("------------------------");
+		System.out.printf("Quantidade de Vértices: %d\n", getQtdeVertice());
+		System.out.printf("Quantidade de Arestas: %d\n", getQtdeArestas());
+		eOrientado();
+	}
+
+	private void eOrientado() {
+		for (int i = 0; i < qtdeVertice; i++) {
+			for (int j = 0; j < qtdeArestas; j++) {
+				if (matrizIncidencia[i][j] == -1) {
+					System.out.println("Grafo Orientado");
+					System.out.println("------------------------\n");
+					return;
+				}
+			}
+		}
+		System.out.println("Grafo Não Orientado");
+		System.out.println("------------------------\n");
+		arcosNaoOrientado();
+	}
 }

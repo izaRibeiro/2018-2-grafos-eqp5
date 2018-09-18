@@ -95,10 +95,12 @@ public class GrafoMatrizIncidencia {
     }
 
     public void info() {
-        System.out.printf("Grafo de ordem %d\n", getQtdeVertice());
-        System.out.printf("Qtde de arestas %d\n", getQtdeArestas());
-        eOrientado();
-        eGrafoSimples();
+    	System.out.println("------------------------");
+    	eOrientado();
+    	System.out.printf("Quantidade de Vertices: %d\n", getQtdeVertice());
+        System.out.printf("Quantidade de arestas: %d\n", getQtdeArestas());
+        System.out.printf("Grafo de ordem: %d\n", getQtdeVertice());
+        System.out.println("------------------------\n");
     }
 
     private void eGrafoSimples() {
@@ -133,30 +135,6 @@ public class GrafoMatrizIncidencia {
         }
         System.out.println("Grafo Não Orientado");
         arcosNaoOrientado();
-        qtdeFontessumidouros();
-        eEuleriano();
-    }
-
-    private void eEuleriano() {
-        int contQtdeVertice = 0;
-
-        for (int i = 0; i < qtdeVertice; i++) {
-            int cont = 0;
-            for (int j = 0; j < qtdeArestas; j++) {
-                if (matrizIncidencia[i][j] == 1) {
-                    cont++;
-                }
-            }
-            if (cont % 2 == 0) {
-                contQtdeVertice++;
-            }
-        }
-
-        if (contQtdeVertice == qtdeVertice) {
-            System.out.println("Euleriano");
-        } else {
-            System.out.println("Não é Euleriano");
-        }
     }
 
     private void arcosNaoOrientado() {
@@ -194,26 +172,6 @@ public class GrafoMatrizIncidencia {
             }
         }
     }
-
-    private void qtdeFontessumidouros() {
-        for (int i = 0; i < qtdeVertice; i++) {
-            int qtdeFontes = 0;
-            int qtdeSumidouro = 0;
-            for (int j = 0; j < qtdeArestas; j++) {
-                if (matrizIncidencia[i][j] == 1) {
-                    qtdeFontes++;
-                } else if (matrizIncidencia[i][j] == -1) {
-                    qtdeSumidouro++;
-                }
-            }
-            if (qtdeFontes == 0 && qtdeSumidouro > 0) {
-                System.out.printf("%d - sumidouro\t", i + 1);
-            }
-            if (qtdeFontes > 0 && qtdeSumidouro == 0) {
-                System.out.printf("%d - fonte\t", i + 1);
-            }
-        }
-    } 
 
     public int getQtdeVertice() {
         return qtdeVertice;

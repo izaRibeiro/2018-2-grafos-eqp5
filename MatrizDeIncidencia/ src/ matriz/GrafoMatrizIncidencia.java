@@ -16,7 +16,7 @@ public class GrafoMatrizIncidencia {
         	
             for (int j = 0; j < qtdeArestas; j++) {
                 System.out.printf("Vertice %d se liga com a aresta %d\n", i + 1, j + 1);
-                System.out.println("s - sim | n - não");
+                System.out.println("s - sim | n - nï¿½o");
                 char op = scanner.next().charAt(0);
                 switch (op) {
                     case 's' :
@@ -83,14 +83,14 @@ public class GrafoMatrizIncidencia {
     public void imprimirMatriz() {
         if (matrizIncidencia != null) {
             for (int i = 0; i < qtdeVertice; i++) {
-                  System.out.printf("Vértice %d: \t", (i+1));
+                  System.out.printf("Vï¿½rtice %d: \t", (i+1));
                 for (int j = 0; j < qtdeArestas; j++) {
                     System.out.print(matrizIncidencia[i][j]+ "\t");
                 }
                 System.out.println();
             }
         } else {
-            System.err.println("Matriz ainda não existe, crie uma.");
+            System.err.println("Matriz ainda nï¿½o existe, crie uma.");
         }
     }
 
@@ -119,7 +119,7 @@ public class GrafoMatrizIncidencia {
         if (contLacos == 0) {
             System.out.println("Grafo Simples");
         } else {
-            System.out.printf("Grafo Não Simples, possui %d laços", contLacos);
+            System.out.printf("Grafo Nï¿½o Simples, possui %d laï¿½os", contLacos);
         }
     }
 
@@ -133,7 +133,7 @@ public class GrafoMatrizIncidencia {
                 }
             }
         }
-        System.out.println("Grafo Não Orientado");
+        System.out.println("Grafo Nï¿½o Orientado");
         arcosNaoOrientado();
     }
 
@@ -192,7 +192,7 @@ public class GrafoMatrizIncidencia {
 
 	
 	public void removeVertice() {
-		System.out.printf("Digite o número dao vértice que deseja remover: ");
+		System.out.printf("Digite o nï¿½mero dao vï¿½rtice que deseja remover: ");
         int vertice = scanner.nextInt();
         
 		for (int i = 0; i < vertice; i++) {
@@ -206,7 +206,7 @@ public class GrafoMatrizIncidencia {
 	}
 	
 	public void removeAresta() {
-		System.out.printf("Digite o número da aresta que deseja remover: ");
+		System.out.printf("Digite o nï¿½mero da aresta que deseja remover: ");
         int aresta = scanner.nextInt();
 		int aux = 0;
 		
@@ -215,7 +215,7 @@ public class GrafoMatrizIncidencia {
         matrizaux = new int[qtdeVertice][qtdeArestas];
 		
 	       for (int i = 0; i < qtdeVertice; i++) {
-               System.out.printf("Vértice %d: \t", (i+1));
+               System.out.printf("Vï¿½rtice %d: \t", (i+1));
              for (int j = 0; j < qtdeArestas; j++) {
             	 if(aux == 0) {
             	 	if(j != aresta - 1) {
@@ -246,7 +246,54 @@ public class GrafoMatrizIncidencia {
              }
          }
 	     
-	       
+	    public void removeVertice() {
+        System.out.printf("Digite o nÃºmero da aresta que deseja remover: ");
+        int vertice = scanner.nextInt();
+        int aux = 0;
+        int contadorDeArestas = 0;
+
+        matrizaux = new int[qtdeVertice][qtdeArestas];
+
+
+
+
+        qtdeVertice = qtdeVertice - 1;
+
+        matrizaux = new int[qtdeVertice][qtdeArestas];
+
+           for (int i = 0; i < qtdeVertice; i++) {
+               System.out.printf("VÃ©rtice %d: \t", (i+1));
+             for (int j = 0; j < qtdeArestas; j++) {
+                 if(aux == 0) {
+                     if(i != vertice - 1) {
+                         matrizaux[i][j] = matrizIncidencia[i][j];
+                         System.out.print(matrizaux[i][j]+ "\t");
+                     }else {
+                         aux = 1;
+                         matrizaux[i][j] = matrizIncidencia[i + 1][j];
+                         System.out.print(matrizaux[i][j]+ "\t");
+                     }
+                 }else {
+                      matrizaux[i][j] = matrizIncidencia[i + 1][j];
+                      System.out.print(matrizaux[i][j]+ "\t");
+                 }
+
+
+             }
+             System.out.println();
+
+
+         }
+
+          matrizIncidencia = new int[qtdeVertice][qtdeArestas];
+
+          for (int i = 0; i < qtdeVertice; i++) {
+             for (int j = 0; j < qtdeArestas; j++) {
+                 matrizIncidencia[i][j] = matrizaux[i][j];
+             }
+         }
+
+    }
 
 	}
 }

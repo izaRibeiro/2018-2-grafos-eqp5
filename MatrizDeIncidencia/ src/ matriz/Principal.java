@@ -3,9 +3,8 @@ import java.util.Scanner;
 import matriz.GrafoMatrizIncidencia;
 
 public class Principal {
-
-
-        static Scanner scanner = new Scanner(System.in);
+	
+ static Scanner scanner = new Scanner(System.in);
         private static int opcao;
 
         public static void main(String[] args) {
@@ -29,6 +28,7 @@ public class Principal {
             }
                 System.out.println("Volte sempre ! :)");
         }
+        
 private static void getGrafoMatrizIncidencia() {
             int continuarOp3 = 1;
             GrafoMatrizIncidencia grafoMatrizIncidencia = new GrafoMatrizIncidencia();

@@ -88,7 +88,6 @@ public class Grafo {
     }
 
     public void imprimir() {
-        System.out.println(arestas.size()+"\t"+vertices.size());
         int i = 0;
         int j = 0;
         String aresta = "\t";
@@ -113,43 +112,28 @@ public class Grafo {
         int aresta = scanner.nextInt();
         
         int aux = 0;
-	int qtdeArestas = arestas.size();
-        int qtdeVertice = vertices.size();
+
     
-        qtdeArestas = qtdeArestas - 1;
         
-        matrizaux = new String[qtdeVertice][qtdeArestas];
+        matrizaux = new String[vertices.size()][arestas.size()];
 		
-	       for (int i = 0; i < qtdeVertice; i++) {
-               System.out.printf("\nVértice %d: \t", (i+1));
-             for (int j = 0; j < qtdeArestas; j++) {
+	       for (int i = 0; i < vertices.size(); i++) {
+             for (int j = 0; j < arestas.size(); j++) {
             	 if(aux == 0) {
             	 	if(j != aresta - 1) {
-            	 		matrizaux[i][j] = matrizIncidencia[i][j];
-            	 		System.out.print(matrizaux[i][j]+ "\t");
+                                
             	 	}else {
             	 		aux = 1;
-            	 		matrizaux[i][j] = matrizIncidencia[i][j +1];
-            	 		System.out.print(matrizaux[i][j]+ "\t");
+                                arestas.remove(j);
             	 	}
             	 }else {
-         	 		matrizaux[i][j] = matrizIncidencia[i][j + 1];
-         	 		System.out.print(matrizaux[i][j]+ "\t");
             	 }
              }
           
              }
-             System.out.println();
              
-            matrizIncidencia = new String[qtdeVertice][qtdeArestas];
-	      
-	      for (int i = 0; i < qtdeVertice; i++) {
-             for (int j = 0; j < qtdeArestas; j++) {
-            	 matrizIncidencia[i][j] = matrizaux[i][j];
-             }
-         } 
+
             criaMatrizNaoOrientada();
-            System.out.println(arestas.size()+"\t"+vertices.size());
     }
     
     

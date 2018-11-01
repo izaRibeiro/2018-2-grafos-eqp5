@@ -1,13 +1,17 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Grafo {
-
+    Scanner scanner = new Scanner(System.in);
+    
     private String id;
     private ArrayList<Vertice> vertices;
     private ArrayList<Aresta> arestas;
     String[][] matrizIncidencia;
+    String[][] matrizaux;
+
 
     public Grafo(ArrayList<Vertice> vertices, ArrayList<Aresta> arestas) {
         this.vertices = vertices;
@@ -57,7 +61,6 @@ public class Grafo {
                 }
             }
            
-
         return matrizIncidencia;
     }
     
@@ -85,6 +88,7 @@ public class Grafo {
     }
 
     public void imprimir() {
+        System.out.println(arestas.size()+"\t"+vertices.size());
         int i = 0;
         int j = 0;
         String aresta = "\t";
@@ -104,6 +108,49 @@ public class Grafo {
         System.out.println("\n\n");
     }
     
+    public void removeAresta(){
+        System.out.printf("Digite o número da aresta que deseja remover: ");
+        int aresta = scanner.nextInt();
+        
+        int aux = 0;
+	int qtdeArestas = arestas.size();
+        int qtdeVertice = vertices.size();
+    
+        qtdeArestas = qtdeArestas - 1;
+        
+        matrizaux = new String[qtdeVertice][qtdeArestas];
+		
+	       for (int i = 0; i < qtdeVertice; i++) {
+               System.out.printf("\nVértice %d: \t", (i+1));
+             for (int j = 0; j < qtdeArestas; j++) {
+            	 if(aux == 0) {
+            	 	if(j != aresta - 1) {
+            	 		matrizaux[i][j] = matrizIncidencia[i][j];
+            	 		System.out.print(matrizaux[i][j]+ "\t");
+            	 	}else {
+            	 		aux = 1;
+            	 		matrizaux[i][j] = matrizIncidencia[i][j +1];
+            	 		System.out.print(matrizaux[i][j]+ "\t");
+            	 	}
+            	 }else {
+         	 		matrizaux[i][j] = matrizIncidencia[i][j + 1];
+         	 		System.out.print(matrizaux[i][j]+ "\t");
+            	 }
+             }
+          
+             }
+             System.out.println();
+             
+            matrizIncidencia = new String[qtdeVertice][qtdeArestas];
+	      
+	      for (int i = 0; i < qtdeVertice; i++) {
+             for (int j = 0; j < qtdeArestas; j++) {
+            	 matrizIncidencia[i][j] = matrizaux[i][j];
+             }
+         } 
+            criaMatrizNaoOrientada();
+            System.out.println(arestas.size()+"\t"+vertices.size());
+    }
     
     
 

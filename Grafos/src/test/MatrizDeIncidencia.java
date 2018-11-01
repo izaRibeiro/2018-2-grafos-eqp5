@@ -24,7 +24,7 @@ public class MatrizDeIncidencia {
         Vertice v2 = new Vertice("v2");
         Vertice v3 = new Vertice("v3");
         Aresta a1 = new Aresta("a1",v1, v2);
-        Aresta a2 = new Aresta("a2",v2, v1);
+        Aresta a2 = new Aresta("a2",v2, v3);
         Aresta a3 = new Aresta("a3",v1, v3);
         
         Grafo g1 = new Grafo("g1");
@@ -33,12 +33,14 @@ public class MatrizDeIncidencia {
         g1.adicionarAresta(a3);
         g1.adicionarVertice(v1);
         g1.adicionarVertice(v2);
-        g1.adicionarVertice(v3);
-        
+        g1.adicionarVertice(v3);       
         g1.criaMatrizOrientada();
         g1.imprimir();
         
         g1.criaMatrizNaoOrientada();
+        g1.imprimir();
+        
+        g1.removeAresta();
         g1.imprimir();
         
         

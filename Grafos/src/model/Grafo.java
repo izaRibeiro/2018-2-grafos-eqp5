@@ -109,32 +109,52 @@ public class Grafo {
     
     public void removeAresta(){
         System.out.printf("Digite o número da aresta que deseja remover: ");
-        int aresta = scanner.nextInt();
-        
+        int aresta = scanner.nextInt();        
         int aux = 0;
 
-    
-        
         matrizaux = new String[vertices.size()][arestas.size()];
 		
-	       for (int i = 0; i < vertices.size(); i++) {
-             for (int j = 0; j < arestas.size(); j++) {
+         for (int i = 0; i < vertices.size(); i++) {
+                   for (int j = 0; j < arestas.size(); j++) {
             	 if(aux == 0) {
-            	 	if(j != aresta - 1) {
+                            if(j != aresta - 1) {
                                 
-            	 	}else {
-            	 		aux = 1;
-                                arestas.remove(j);
+                            }else {
+                                    aux = 1;
+                                    arestas.remove(j);
             	 	}
-            	 }else {
-            	 }
-             }
+                 	 }
+                  }
           
-             }
+         }
              
+         criaMatrizNaoOrientada();
+        }
+    
+         public void removeVertice(){
+                    System.out.printf("Digite o número da aresta que deseja remover: ");
+                      int aresta = scanner.nextInt();        
+                      int aux = 0;
 
-            criaMatrizNaoOrientada();
-    }
+                       matrizaux = new String[vertices.size()][arestas.size()];
+		
+                     for (int i = 0; i < vertices.size(); i++) {
+                            for (int j = 0; j < arestas.size(); j++) {
+                        	 if(aux == 0) {
+                                            if(j != aresta - 1) {
+                   
+                                       }else {
+                                              aux = 1;
+                                              vertices.remove(i);
+                                              arestas.remove(j);
+            	 	}
+                            }
+                  }
+          
+         }
+             
+         criaMatrizNaoOrientada();
+        }
     
     
 

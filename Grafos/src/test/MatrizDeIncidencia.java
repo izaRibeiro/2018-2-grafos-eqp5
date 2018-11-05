@@ -39,10 +39,13 @@ public class MatrizDeIncidencia {
         
         g1.criaMatrizNaoOrientada();
         g1.imprimir();
-        
+        /*
         g1.removeAresta();
         g1.imprimir();
+        */
         
+        g1.removeVertice();
+        g1.imprimir();
         
     }
     

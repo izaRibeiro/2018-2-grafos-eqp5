@@ -158,12 +158,14 @@ public class Grafo {
     
              
     public void adicionaAresta(Aresta a){ 
-
-         arestas.add(a);
-             
+         arestas.add(a); 
          criaMatrizNaoOrientada();
         }
     
+    public void adicionaVertice(Vertice v){ 
+         vertices.add(v); 
+         criaMatrizNaoOrientada();
+        }
                  
          
 

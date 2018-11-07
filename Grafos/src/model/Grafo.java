@@ -156,7 +156,16 @@ public class Grafo {
          criaMatrizNaoOrientada();
         }
     
+             
+    public void adicionaAresta(Aresta a){ 
+
+         arestas.add(a);
+             
+         criaMatrizNaoOrientada();
+        }
     
+                 
+         
 
     public String getId() {
         return id;

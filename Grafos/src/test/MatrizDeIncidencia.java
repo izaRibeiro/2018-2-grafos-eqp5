@@ -44,9 +44,14 @@ public class MatrizDeIncidencia {
         g1.imprimir();
         */
         
+        /*
         g1.removeVertice();
         g1.imprimir();
+        */
         
+         Aresta a4 = new Aresta("a4",v2, v1);
+        g1.adicionaAresta(a4);
+        g1.imprimir();
     }
     
 }

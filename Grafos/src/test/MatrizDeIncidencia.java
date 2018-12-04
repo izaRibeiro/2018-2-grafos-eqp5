@@ -7,6 +7,8 @@ package test;
 import model.Grafo;
 import model.Vertice;
 import model.Aresta;
+import edu.ifet.grafos.graphview.GraphView;
+import java.io.File;
 
 import java.util.ArrayList;
 
@@ -49,17 +51,18 @@ public class MatrizDeIncidencia {
         g1.imprimir();
         */
         
-        /*
+        
         Aresta a4 = new Aresta("a4",v2, v1);
         g1.adicionaAresta(a4);
         g1.imprimir();
-        */
+        g1.ordem();
         
         /*
         Vertice v4 = new Vertice("v4");
         g1.adicionaVertice(v4);
         g1.imprimir();
         */
+        
     }
     
 }

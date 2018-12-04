@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import edu.ifet.grafos.graphview.GraphView;
+import java.io.File;
 
 public class Grafo {
     Scanner scanner = new Scanner(System.in);
@@ -167,7 +169,9 @@ public class Grafo {
          criaMatrizNaoOrientada();
         }
                  
-         
+    public void ordem(){
+         System.out.println(vertices.size());
+    }
 
     public String getId() {
         return id;
@@ -204,4 +208,6 @@ public class Grafo {
     public String getValorMatriz(int i, int j){
         return matrizIncidencia[i][j];
     }
+    
+
 }

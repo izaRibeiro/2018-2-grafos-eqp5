@@ -7,10 +7,6 @@ package test;
 import model.Grafo;
 import model.Vertice;
 import model.Aresta;
-import edu.ifet.grafos.graphview.GraphView;
-import java.io.File;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -56,6 +52,7 @@ public class MatrizDeIncidencia {
         g1.adicionaAresta(a4);
         g1.imprimir();
         g1.ordem();
+        g1.grau();
         
         /*
         Vertice v4 = new Vertice("v4");

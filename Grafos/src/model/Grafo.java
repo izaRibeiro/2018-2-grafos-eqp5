@@ -35,10 +35,7 @@ public class Grafo {
     }
     
     
-    /*Grafo regular ou não*/
-    public boolean isRegular() {
-        return regular;    
-    }
+ 
 
     public void setRegular() {
         if (vertices.size() > 0) {
@@ -189,8 +186,8 @@ public class Grafo {
         vertices.add(v);
     }
 
-    public void ordem() {
-        System.out.println("Ordem: " + vertices.size());
+    public int ordem() {
+        return vertices.size();
     }
 
     public void grau() {
@@ -207,6 +204,45 @@ public class Grafo {
             }
             System.out.println(vertice.getId() + " Grau: " + aux);
         }
+    }
+    public int grauVertice2(Vertice vertice) {
+        int cont = 0;
+        for (int i = 0; i < arestas.size(); i++) {
+            if (arestas.get(i).getInicio() == vertice) {
+                cont++;
+            }
+            if (arestas.get(i).getFim() == vertice) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    /**
+     *
+     * @return grau da regularidade
+     */
+    public int isRegular() {
+        int grau = -1;
+        for (Vertice vertice : vertices) {
+            if (grau == -1) {
+                grau = grauVertice2(vertice);
+            } else if (grau != grauVertice2(vertice)) {
+                return 0;
+            }
+        }
+        return grau;
+    }
+
+    /**
+     *
+     * @return ordem do grafo
+     */
+    public int isCompleto() {
+        if (isRegular() == ordem() - 1) {
+            return ordem();
+        }
+        return 0;
     }
 
     public String getId() {

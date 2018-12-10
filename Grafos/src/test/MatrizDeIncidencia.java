@@ -81,9 +81,11 @@ public class MatrizDeIncidencia {
         
         g2.criaMatrizNaoOrientada();
         g2.imprimir();
+        g2.isRegular();
         System.out.println("Valor da aresta 6: "+a6.getPeso());
         System.out.println("Valor da aresta 7: "+a7.getPeso());
         System.out.println("Valor da aresta 8: "+a8.getPeso());
+        System.out.println("grafo é: "+g2.isRegular() + " e "+ g2.isCompleto());
     }
     
 }

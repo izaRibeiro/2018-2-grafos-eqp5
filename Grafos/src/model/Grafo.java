@@ -127,7 +127,7 @@ public class Grafo {
             System.out.println("\n");
             System.out.print("V" + (i + 1) + "\t");
             for (j = 0; j < arestas.size(); j++) {
-                System.out.print(getValorMatriz(i, j) + "\t");
+                System.out.print(getMatrizIncidencia()+ "\t");
             }
         }
 
@@ -155,7 +155,6 @@ public class Grafo {
 
         }
 
-        criaMatrizNaoOrientada();
     }
 
     public void removeVertice() {
@@ -180,17 +179,14 @@ public class Grafo {
 
         }
 
-        criaMatrizNaoOrientada();
     }
 
     public void adicionaAresta(Aresta a) {
         arestas.add(a);
-        criaMatrizNaoOrientada();
     }
 
     public void adicionaVertice(Vertice v) {
         vertices.add(v);
-        criaMatrizNaoOrientada();
     }
 
     public void ordem() {

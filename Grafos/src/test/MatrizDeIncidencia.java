@@ -25,6 +25,7 @@ public class MatrizDeIncidencia {
         Aresta a2 = new Aresta("a2",v2, v3);
         Aresta a3 = new Aresta("a3",v1, v3);
         
+        
         Grafo g1 = new Grafo("g1");
         g1.adicionarAresta(a1);
         g1.adicionarAresta(a2);
@@ -59,7 +60,30 @@ public class MatrizDeIncidencia {
         g1.adicionaVertice(v4);
         g1.imprimir();
         */
+       
+        Vertice v6 = new Vertice("v6");
+        Vertice v7 = new Vertice("v7");
+        Vertice v8 = new Vertice("v8");
+        Aresta a6 = new Aresta("a6",20,v6, v7);
+        Aresta a7 = new Aresta("a7",10,v7, v8);
+        Aresta a8 = new Aresta("a8",7,v6, v8);
         
+        
+        Grafo g2 = new Grafo("g2");
+        g2.adicionarAresta(a6);
+        g2.adicionarAresta(a7);
+        g2.adicionarAresta(a8);
+        g2.adicionarVertice(v6);
+        g2.adicionarVertice(v7);
+        g2.adicionarVertice(v8);       
+        g2.criaMatrizOrientada();
+        g2.imprimir();
+        
+        g2.criaMatrizNaoOrientada();
+        g2.imprimir();
+        System.out.println("Valor da aresta 6: "+a6.getPeso());
+        System.out.println("Valor da aresta 7: "+a7.getPeso());
+        System.out.println("Valor da aresta 8: "+a8.getPeso());
     }
     
 }

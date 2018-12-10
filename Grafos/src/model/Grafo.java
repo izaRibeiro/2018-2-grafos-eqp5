@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import edu.ifet.grafos.graphview.GraphView;
-import java.io.File;
 
 public class Grafo {
     Scanner scanner = new Scanner(System.in);
@@ -170,8 +168,24 @@ public class Grafo {
         }
                  
     public void ordem(){
-         System.out.println(vertices.size());
-    }
+             System.out.println("Ordem: "+vertices.size());
+         }
+         
+          public void  grau(){
+                     int aux = 0;
+                      for (Vertice vertice : vertices) {
+                        aux = 0;
+                    for (int i = 0; i < arestas.size(); i++) {
+                          if (arestas.get(i).getInicio() == vertice) {
+                              aux ++;
+                        }
+                          if (arestas.get(i).getFim() == vertice) {
+                              aux ++;
+                      }
+            }
+            System.out.println(vertice.getId() + " Grau: " + aux);
+}
+          }
 
     public String getId() {
         return id;

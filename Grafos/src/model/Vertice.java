@@ -57,6 +57,9 @@ public class Vertice {
         this.relacionamento = relacionamento;
     }
     
+      public void adicionaRelacionamento(Aresta aresta){
+        this.relacionamento.add(aresta);
+    }
     
     
     

@@ -18,12 +18,15 @@ public class MatrizDeIncidencia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        /* Grafo G1*/
+        
         Vertice v1 = new Vertice("v1");
         Vertice v2 = new Vertice("v2");
         Vertice v3 = new Vertice("v3");
         Aresta a1 = new Aresta("a1",v1, v2);
         Aresta a2 = new Aresta("a2",v2, v3);
-        Aresta a3 = new Aresta("a3",v1, v3);
+        Aresta a3 = new Aresta("a3",v1, v2);
         
         
         Grafo g1 = new Grafo("g1");
@@ -35,31 +38,14 @@ public class MatrizDeIncidencia {
         g1.adicionarVertice(v3);       
         g1.criaMatrizOrientada();
         g1.imprimir();
+         g1.grau();
+        g1.numOrdem();
+        g1.isCompleto();
+  
+      
+       
         
-        g1.criaMatrizNaoOrientada();
-        g1.imprimir();
-        /*
-        g1.removeAresta();
-        g1.imprimir();
-        */
-        
-        /*
-        g1.removeVertice();
-        g1.imprimir();
-        */
-        
-        
-        Aresta a4 = new Aresta("a4",v2, v1);
-        g1.adicionaAresta(a4);
-        g1.imprimir();
-        g1.ordem();
-        g1.grau();
-        
-        /*
-        Vertice v4 = new Vertice("v4");
-        g1.adicionaVertice(v4);
-        g1.imprimir();
-        */
+        /* Grafo G2*/
        
         Vertice v6 = new Vertice("v6");
         Vertice v7 = new Vertice("v7");
@@ -76,16 +62,16 @@ public class MatrizDeIncidencia {
         g2.adicionarVertice(v6);
         g2.adicionarVertice(v7);
         g2.adicionarVertice(v8);       
-        g2.criaMatrizOrientada();
-        g2.imprimir();
-        
+     
         g2.criaMatrizNaoOrientada();
         g2.imprimir();
-        g2.isRegular();
+        g2.grau();
+        g2.numOrdem(); /* Ordem do grau */
+        g2.isCompleto();
+        
         System.out.println("Valor da aresta 6: "+a6.getPeso());
         System.out.println("Valor da aresta 7: "+a7.getPeso());
         System.out.println("Valor da aresta 8: "+a8.getPeso());
-        System.out.println("grafo é: "+g2.isRegular() + " e "+ g2.isCompleto());
     }
     
 }

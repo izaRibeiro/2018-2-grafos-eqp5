@@ -33,9 +33,6 @@ public class Grafo {
 
     public Grafo() {
     }
-    
-    
- 
 
     public void setRegular() {
         if (vertices.size() > 0) {
@@ -49,15 +46,13 @@ public class Grafo {
 
             this.regular = true;
             System.out.println("É regular");
-            
+
         } else {
             this.regular = false;
             System.out.println("Não é regular");
-            
+
         }
     }
-    
-    
 
     public void adicionarVertice(Vertice v) {
         vertices.add(v);
@@ -124,7 +119,7 @@ public class Grafo {
             System.out.println("\n");
             System.out.print("V" + (i + 1) + "\t");
             for (j = 0; j < arestas.size(); j++) {
-                System.out.print(getMatrizIncidencia()+ "\t");
+                System.out.print(getMatrizIncidencia() + "\t");
             }
         }
 
@@ -149,9 +144,7 @@ public class Grafo {
                     }
                 }
             }
-
         }
-
     }
 
     public void removeVertice() {
@@ -190,6 +183,11 @@ public class Grafo {
         return vertices.size();
     }
 
+    public int numOrdem() {
+        System.out.println("Grafo de ordem: " + vertices.size());
+        return vertices.size();
+    }
+
     public void grau() {
         int aux = 0;
         for (Vertice vertice : vertices) {
@@ -205,17 +203,18 @@ public class Grafo {
             System.out.println(vertice.getId() + " Grau: " + aux);
         }
     }
-    public int grauVertice2(Vertice vertice) {
-        int cont = 0;
+
+    public int grauVertice(Vertice vertice) {
+        int aux = 0;
         for (int i = 0; i < arestas.size(); i++) {
             if (arestas.get(i).getInicio() == vertice) {
-                cont++;
+                aux++;
             }
             if (arestas.get(i).getFim() == vertice) {
-                cont++;
+                aux++;
             }
         }
-        return cont;
+        return aux;
     }
 
     /**
@@ -226,11 +225,16 @@ public class Grafo {
         int grau = -1;
         for (Vertice vertice : vertices) {
             if (grau == -1) {
-                grau = grauVertice2(vertice);
-            } else if (grau != grauVertice2(vertice)) {
+                grau = grauVertice(vertice);
+
+            } else if (grau != grauVertice(vertice)) {
+                System.out.println("Não é regular");
                 return 0;
             }
+
         }
+        System.out.println("É regular");
+
         return grau;
     }
 
@@ -240,9 +244,12 @@ public class Grafo {
      */
     public int isCompleto() {
         if (isRegular() == ordem() - 1) {
+            System.out.println("É completo");
             return ordem();
+        } else {
+            System.out.println("Não é completo");
+            return 0;
         }
-        return 0;
     }
 
     public String getId() {

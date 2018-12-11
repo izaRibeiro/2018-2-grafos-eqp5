@@ -13,6 +13,11 @@ public class Aresta {
         this.setArestaFim(fim);
         this.setId(id);
     }
+    
+        public Aresta(Vertice inicio, Vertice fim) {
+        this.setArestaInicio(inicio);
+        this.setArestaFim(fim);
+    }
 
     public Aresta(double peso, Vertice inicio, Vertice fim) {
         this.setPeso(peso);

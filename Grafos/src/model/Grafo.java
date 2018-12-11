@@ -70,9 +70,9 @@ public class Grafo {
 
         for (i = 0; i < vertices.size(); i++) {
             for (j = 0; j < arestas.size(); j++) {
-                if (vertices.get(i).getId().equals(arestas.get(j).getInicio().getId())) {
+                if (vertices.get(i).equals(arestas.get(j).getInicio())) {
                     matrizIncidencia[i][j] = "1";
-                } else if (vertices.get(i).getId().equals(arestas.get(j).getFim().getId())) {
+                } else if (vertices.get(i).equals(arestas.get(j).getFim())) {
                     matrizIncidencia[i][j] = "1";
                 } else {
                     matrizIncidencia[i][j] = "0";
@@ -92,9 +92,9 @@ public class Grafo {
 
         for (i = 0; i < vertices.size(); i++) {
             for (j = 0; j < arestas.size(); j++) {
-                if (vertices.get(i).getId().equals(arestas.get(j).getInicio().getId())) {
+                if (vertices.get(i).equals(arestas.get(j).getInicio())) {
                     matrizIncidencia[i][j] = "1";
-                } else if (vertices.get(i).getId().equals(arestas.get(j).getFim().getId())) {
+                } else if (vertices.get(i).equals(arestas.get(j).getFim())) {
                     matrizIncidencia[i][j] = "-1";
                 } else {
                     matrizIncidencia[i][j] = "0";
@@ -119,11 +119,59 @@ public class Grafo {
             System.out.println("\n");
             System.out.print("V" + (i + 1) + "\t");
             for (j = 0; j < arestas.size(); j++) {
-                System.out.print(getMatrizIncidencia() + "\t");
+                /*System.out.print(getMatrizIncidencia() + "\t");*/
+                System.out.print(getValorMatriz(i, j)+ "\t");
             }
         }
 
         System.out.println("\n\n");
+        
+    }
+    
+     public void imprimirNaoOrientado() {
+        int i = 0;
+        int j = 0;
+        criaMatrizNaoOrientada();
+        String aresta = "\t";
+
+        for (j = 0; j < arestas.size(); j++) {
+            System.out.print("\tA" + (j + 1));
+        }
+
+        for (i = 0; i < vertices.size(); i++) {
+            System.out.println("\n");
+            System.out.print("V" + (i + 1) + "\t");
+            for (j = 0; j < arestas.size(); j++) {
+                /*System.out.print(getMatrizIncidencia() + "\t");*/
+                System.out.print(getValorMatriz(i, j)+ "\t");
+            }
+        }
+
+        System.out.println("\n\n");
+        
+    }
+     
+      public void imprimirOrientado() {
+        int i = 0;
+        int j = 0;
+        criaMatrizOrientada();
+        String aresta = "\t";
+
+        for (j = 0; j < arestas.size(); j++) {
+            System.out.print("\tA" + (j + 1));
+        }
+
+        for (i = 0; i < vertices.size(); i++) {
+            System.out.println("\n");
+            System.out.print("V" + (i + 1) + "\t");
+            for (j = 0; j < arestas.size(); j++) {
+                /*System.out.print(getMatrizIncidencia() + "\t");*/
+                System.out.print(getValorMatriz(i, j)+ "\t");
+            }
+        }
+
+        System.out.println("\n\n");
+        
     }
 
     public void removeAresta() {
@@ -260,18 +308,19 @@ public class Grafo {
         this.id = id;
     }
 
-    public Vertice getVertice(Vertice v) {
-        
-            for (int i = 0; i < vertices.size(); i++) {
-            for (int j = 0; j < arestas.size(); j++) {
-                    if (vertices.get(i) == v) {
+    public Vertice getVertice(int v) {
+            int i = 0;
+            int j = 0;
+            for (i = 0; i < vertices.size(); i++) {
+            for (j = 0; j < arestas.size(); j++) {
+                    if (i == v) {
                             return vertices.get(i);
                     } 
 
                 }
             }
 
-        return null;
+        return vertices.get(v);
         
     }
     

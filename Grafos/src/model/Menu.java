@@ -112,6 +112,7 @@ public class Menu {
                 default:
                     System.err.println("Essa opção não existe");
                     break;
+                    //esta opção não existe
             }
         }
     }

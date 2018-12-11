@@ -11,8 +11,11 @@ public class Grafo {
     private ArrayList<Vertice> vertices;
     private ArrayList<Aresta> arestas;
     private boolean regular = false;
+    
     String[][] matrizIncidencia;
     String[][] matrizaux;
+    
+    private boolean eOrientado;
 
     public Grafo(ArrayList<Vertice> vertices, ArrayList<Aresta> arestas) {
         this.vertices = vertices;
@@ -33,6 +36,15 @@ public class Grafo {
 
     public Grafo() {
     }
+
+    public Grafo(String id, boolean eOrientado) {
+        this.id = id;
+        this.eOrientado = eOrientado;
+        this.vertices = new ArrayList<Vertice>();
+        this.arestas = new ArrayList<Aresta>();
+    }
+    
+    
 
     public void setRegular() {
         if (vertices.size() > 0) {
@@ -106,9 +118,14 @@ public class Grafo {
         return matrizIncidencia;
     }
 
-    public void imprimir() {
+    public void imprimir(Grafo g) {
         int i = 0;
         int j = 0;
+        if(g.eOrientado == true){
+            criaMatrizOrientada();
+        }else{
+            criaMatrizNaoOrientada();
+        }
         String aresta = "\t";
 
         for (j = 0; j < arestas.size(); j++) {
@@ -125,6 +142,8 @@ public class Grafo {
         }
 
         System.out.println("\n\n");
+        
+        
         
     }
     

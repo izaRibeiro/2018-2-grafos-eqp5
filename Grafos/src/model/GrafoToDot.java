@@ -10,5 +10,12 @@ package model;
  * @author luisg
  */
 public class GrafoToDot {
-    
+    public static String exportaGrafoDot(Grafo grafo) {
+        String graphDot="";
+        
+       // if(grafo.)
+        
+          return graphDot;
+    } 
+  
 }

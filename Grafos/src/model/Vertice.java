@@ -13,12 +13,11 @@ public class Vertice {
     public Vertice(String id, double valor) {
         this.setNome(id);
         this.setValor(valor);
-        this.relacionamento = new ArrayList<Aresta>();
     }
     
      public Vertice(String id) {
         this.setNome(id);
-        this.relacionamento = new ArrayList<Aresta>();
+       
     }
 
     public Vertice() {

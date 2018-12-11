@@ -1,0 +1,8 @@
+Graph grafo 1{null;
+null;
+null;
+ null -- null [name = "null" ];
+
+ null -- null [name = "null" ];
+
+ }

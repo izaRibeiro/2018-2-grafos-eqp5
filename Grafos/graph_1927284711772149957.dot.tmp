@@ -1,0 +1,13 @@
+Graph huahsa{null;
+null;
+null;
+null;
+ model.Vertice@74a14482 -- model.Vertice@1540e19d [name = "1" ];
+
+ model.Vertice@677327b6 -- model.Vertice@1540e19d [name = "1" ];
+
+ model.Vertice@14ae5a5 -- model.Vertice@74a14482 [name = "1" ];
+
+ model.Vertice@1540e19d -- model.Vertice@14ae5a5 [name = "1" ];
+
+ }

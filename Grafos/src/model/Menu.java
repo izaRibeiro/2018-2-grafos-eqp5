@@ -1,8 +1,7 @@
 package model;
 
-import model.Grafo;
-import model.Vertice;
-import model.Aresta;
+import java.io.File;
+import edu.ifet.grafos.graphview.*;
 
 import java.util.Scanner;
 
@@ -22,21 +21,21 @@ public class Menu {
         int continuar = 0;
 
         while (continuar == 0) {
-                getGrafo();
-                switch (opcao) {
-                    case 1:
-                         getGrafo();
-                        break;
-                    default:
-                        //  System.err.println("Essa opção não existe");
-                        break;
-                }
-                System.out.println("Deseja continuar?");
-                System.out.println("Continuar - 0");
-                System.err.print("Sair - 1");
-                continuar = scanner.nextInt();
+            getGrafo();
+            switch (opcao) {
+                case 1:
+                    getGrafo();
+                    break;
+                default:
+                    //  System.err.println("Essa opção não existe");
+                    break;
             }
-         System.out.println("Volte sempre ! :)");
+            System.out.println("Deseja continuar?");
+            System.out.println("Continuar - 0");
+            System.err.print("Sair - 1");
+            continuar = scanner.nextInt();
+        }
+        System.out.println("Volte sempre ! :)");
     }
 
     private static void getGrafo() {
@@ -52,19 +51,23 @@ public class Menu {
 
                     int origem;
                     int destino;
+                    int id = 0;
 
                     System.out.println("Digite o vértice de origem");
                     origem = scanner.nextInt();
 
                     System.out.println("Digite o vértice de destino");
                     destino = scanner.nextInt();
-
-                    Aresta aresta = new Aresta(grafo.getVertice(origem), grafo.getVertice(destino));
+                    id++;
+                    
+                    Aresta aresta = new Aresta(id + "", grafo.getVertice(origem), grafo.getVertice(destino));
 
                     grafo.adicionaAresta(aresta);
                     break;
                 case 2:
-                    Vertice vertice = new Vertice();
+                   int idv = 0;
+                   idv++;
+                    Vertice vertice = new Vertice(idv + "");
                     System.out.println("Adicionar vértice");
                     grafo.adicionaVertice(vertice);
                     break;
@@ -92,10 +95,21 @@ public class Menu {
                     System.out.println("-------------------------------");
                     System.out.println("Matriz de Incidência: ");
 
-
                     break;
                 case 8:
                     grafo.imprimir(grafo);
+                    break;
+                case 9:
+                    String g = GrafoToDot.exportaGrafoDot(grafo);
+                    // Criando um objeto da classe responsável por gerar a imagem do grafo
+                    GraphView gv = new GraphView();
+//Lendo a String 
+                    gv.readString(g);
+//Imprimindo a grafo em texto
+                     System.out.println(gv.getDotSource());
+//Gerando uma imagem com o nome out.png 
+                    File out = new File("out.png");
+                    gv.writeGraphToFile(out);
                     break;
                 case 0:
                     continuarOp3 = 0;
@@ -154,6 +168,7 @@ public class Menu {
         System.out.println("Remover vértice - 6");
         System.out.println("Informações a respeito do grafo - 7");
         System.out.println("Imprime NOVO - 8");
+        System.out.println("Salvar Grafo - 9");
 
         //System.out.println("Confere a existencia de uma aresta - 7");
         System.out.println("voltar menu principal - 0");

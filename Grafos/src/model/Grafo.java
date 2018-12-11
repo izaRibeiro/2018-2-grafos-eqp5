@@ -375,4 +375,12 @@ public class Grafo {
         return vertices.size();
     }
 
+    public boolean iseOrientado() {
+        return eOrientado;
+    }
+
+    public void seteOrientado(boolean eOrientado) {
+        this.eOrientado = eOrientado;
+    }
+
 }

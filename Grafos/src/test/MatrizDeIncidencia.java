@@ -37,7 +37,6 @@ public class MatrizDeIncidencia {
         g1.adicionarVertice(v2);
         g1.adicionarVertice(v3);       
         g1.criaMatrizOrientada();
-        g1.imprimir();
          g1.grau();
         g1.numOrdem();
         g1.isCompleto();
@@ -64,7 +63,6 @@ public class MatrizDeIncidencia {
         g2.adicionarVertice(v8);       
      
         g2.criaMatrizNaoOrientada();
-        g2.imprimir();
         g2.grau();
         g2.numOrdem(); /* Ordem do grau */
         g2.isCompleto();

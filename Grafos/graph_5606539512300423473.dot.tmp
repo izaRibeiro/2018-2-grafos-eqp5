@@ -1,4 +1,0 @@
-digraph G {
-     a1 -> a2 -> c;
-     a2-> a3 [label="0.2",color=red,penwidth=3.0 ];
- }

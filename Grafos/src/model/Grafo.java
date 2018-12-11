@@ -260,6 +260,21 @@ public class Grafo {
         this.id = id;
     }
 
+    public Vertice getVertice(Vertice v) {
+        
+            for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < arestas.size(); j++) {
+                    if (vertices.get(i) == v) {
+                            return vertices.get(i);
+                    } 
+
+                }
+            }
+
+        return null;
+        
+    }
+    
     public ArrayList<Vertice> getVertices() {
         return vertices;
     }
@@ -286,6 +301,10 @@ public class Grafo {
 
     public String getValorMatriz(int i, int j) {
         return matrizIncidencia[i][j];
+    }
+    
+    public int getTamanho(){
+        return vertices.size();
     }
 
 }

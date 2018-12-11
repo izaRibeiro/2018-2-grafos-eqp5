@@ -76,6 +76,19 @@ public class Menu {
 	                case 7:
                                      grafo.criaMatrizOrientada();
 	                	break;
+                                case 8:
+                                    int i;
+                                    System.out.println("-------------------------------");
+                                     System.out.println("Ordem: "+grafo.ordem());
+                                     System.out.println("-------------------------------");
+                                     grafo.grau();
+                                     System.out.println("-------------------------------");
+                                     grafo.isCompleto();
+                                     System.out.println("-------------------------------");
+                                     System.out.println("Matriz de Incidência: ");
+                                     grafo.imprimir();
+                           
+	                	break;
 	                case 0:
 	                    continuarOp3 = 0;
 	                    break;
@@ -112,6 +125,7 @@ public class Menu {
 	        System.out.println("Remover vértice - 5");
 	        System.out.println("Cria matriz não orientada - 6");
 	        System.out.println("Cria matriz orientada - 7");
+                          System.out.println("Informações a respeito do grafo - 8");
 	        //System.out.println("Confere a existencia de uma aresta - 7");
 	        System.out.println("voltar menu principal - 0");
 	        opGrafoMatrizIncidencia = scanner.nextInt();

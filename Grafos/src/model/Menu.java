@@ -13,11 +13,13 @@ public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
     private static int opcao;
+    private static int idv = 0;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       
         int continuar = 0;
 
         while (continuar == 0) {
@@ -65,9 +67,10 @@ public class Menu {
                     grafo.adicionaAresta(aresta);
                     break;
                 case 2:
-                   int idv = 0;
-                   idv++;
+          
+                    idv++;
                     Vertice vertice = new Vertice(idv + "");
+                    System.out.println("e " +idv);
                     System.out.println("Adicionar vértice");
                     grafo.adicionaVertice(vertice);
                     break;
@@ -115,6 +118,7 @@ public class Menu {
 
     // Função MENU PRINCIPAL!!
     private static void getMenu() {
+        
         System.out.println("Cria Grafo - 1");
 
         System.out.println("Informe opção:");

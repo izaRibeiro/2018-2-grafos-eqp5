@@ -311,10 +311,8 @@ public class Grafo {
      */
     public int isCompleto() {
         if (isRegular() == ordem() - 1) {
-            System.out.println("É completo");
             return ordem();
         } else {
-            System.out.println("Não é completo");
             return 0;
         }
     }
@@ -341,6 +339,25 @@ public class Grafo {
 
         return vertices.get(v);
         
+    }
+    
+    public  void getInfo() {
+
+        System.out.print("------------------------\n");
+        System.out.println("Grafo de ordem: " + ordem());
+
+        
+        System.out.printf("Quantidade de Vertices: %d\n", vertices.size());
+        System.out.printf("Quantidade de arestas: %d\n", arestas.size());
+
+        if (isCompleto() == 1) {
+            System.out.println("É completo");
+
+        } else {
+            System.out.println("Não é completo");
+
+        }
+        System.out.println("------------------------\n");
     }
     
     public ArrayList<Vertice> getVertices() {

@@ -85,15 +85,7 @@ public class Menu {
                     break;
 
                 case 7:
-                    int i;
-                    System.out.println("-------------------------------");
-                    System.out.println("Ordem: " + grafo.ordem());
-                    System.out.println("-------------------------------");
-                    grafo.grau();
-                    System.out.println("-------------------------------");
-                    grafo.isCompleto();
-                    System.out.println("-------------------------------");
-                    System.out.println("Matriz de Incidência: ");
+                  grafo.getInfo();
 
                     break;
                 case 8:

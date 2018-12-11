@@ -45,38 +45,48 @@ public class Menu {
 	    private static void getGrafo() {
 	        int continuarOp3 = 1;
 	        Grafo grafo= new Grafo("Grafo");
-                           Aresta aresta = new Aresta();
-                             Vertice vertice = new Vertice();
+
 	        while (continuarOp3 == 1) {
-                    
+                        
+                             
+                             
 	            int opGrafoMatrizIncidencia = menuMatrizIncidencia();
                     
 	            switch (opGrafoMatrizIncidencia) {
 	                case 1:
-	                    System.out.println("Adicionar aresta");
-                                       grafo.adicionaAresta(aresta);
+                                        
+                                        int origem;
+                                        int destino;
+                                      
+                                        System.out.println("Digite o vértice de origem");
+                                        origem = scanner.nextInt();
+                                        
+                                        System.out.println("Digite o vértice de destino");
+                                        destino = scanner.nextInt();
+
+                                        Aresta aresta = new Aresta(grafo.getVertice(origem),grafo.getVertice(destino));
+                                        
+                                        grafo.adicionaAresta(aresta);
 	                    break;
 	                case 2:
+                            Vertice vertice = new Vertice();
                                       System.out.println("Adicionar vértice");
 	                    grafo.adicionaVertice(vertice);
 	                    break;
-	                case 3:
-                                     System.out.println("Impressão");
-	                    grafo.imprimir();
-	                    break;
-	                case 4:
+	                  case 3:
+                                         grafo.imprimirNaoOrientado();
+	                	break;
+                                	case 4:
+                                        grafo.imprimirOrientado();
+	                	break;
+	                case 5:
                                     grafo.removeAresta();
 	                    break;
-	                case 5:
+	                case 6:
 	                   grafo.removeVertice();
 	                    break;
-	                case 6:
-	                    grafo.criaMatrizNaoOrientada();
-	                    break;
-	                case 7:
-                                     grafo.criaMatrizOrientada();
-	                	break;
-                                case 8:
+                                
+                                     case 7 :
                                     int i;
                                     System.out.println("-------------------------------");
                                      System.out.println("Ordem: "+grafo.ordem());
@@ -89,6 +99,7 @@ public class Menu {
                                      grafo.imprimir();
                            
 	                	break;
+      
 	                case 0:
 	                    continuarOp3 = 0;
 	                    break;
@@ -120,12 +131,13 @@ public class Menu {
 	        System.out.println("MATRIZ DE INCIDÊNCIA");
 	        System.out.println("Adicionar aresta - 1");
 	        System.out.println("Adicionar vertice - 2");
-	        System.out.println("Imprimir matriz - 3");
-	        System.out.println("Remover aresta - 4");
-	        System.out.println("Remover vértice - 5");
-	        System.out.println("Cria matriz não orientada - 6");
-	        System.out.println("Cria matriz orientada - 7");
-                          System.out.println("Informações a respeito do grafo - 8");
+	        System.out.println("Imprimir matriz não orientada - 3");
+                          System.out.println("Imprimir matriz orientada - 4");
+	        System.out.println("Remover aresta - 5");
+	        System.out.println("Remover vértice - 6");
+                          System.out.println("Informações a respeito do grafo - 7");
+                          
+                          
 	        //System.out.println("Confere a existencia de uma aresta - 7");
 	        System.out.println("voltar menu principal - 0");
 	        opGrafoMatrizIncidencia = scanner.nextInt();

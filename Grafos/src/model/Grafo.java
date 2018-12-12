@@ -10,8 +10,7 @@ public class Grafo {
     private String id;
     private ArrayList<Vertice> vertices;
     private ArrayList<Aresta> arestas;
-    private boolean regular = false;
-    private boolean valorado = false;
+    private boolean valorado;
     
     String[][] matrizIncidencia;
     String[][] matrizaux;
@@ -36,6 +35,10 @@ public class Grafo {
     }
 
     public Grafo() {
+        vertices = new ArrayList();
+        arestas = new ArrayList();
+        this.id = "";
+        
     }
 
     public Grafo(String id, boolean eOrientado) {
@@ -47,25 +50,8 @@ public class Grafo {
     
     
 
-    public void setRegular() {
-        if (vertices.size() > 0) {
-            int aux = vertices.get(0).relacionamento.size();
-            for (Vertice vertice : vertices) {
-                if (aux != vertice.relacionamento.size()) {
-                    this.regular = false;
-                    return;
-                }
-            }
-
-            this.regular = true;
-            System.out.println("É regular");
-
-        } else {
-            this.regular = false;
-            System.out.println("Não é regular");
-
-        }
-    }
+  
+    
 
     public void adicionarVertice(Vertice v) {
         vertices.add(v);
@@ -454,7 +440,6 @@ public Vertice adicionaVertice(String nome) {
     }
   public void verificaTudo() {
         setValorado();
-        setRegular();
     }
   public void setValorado() {
         if (arestas.size() > 0) {

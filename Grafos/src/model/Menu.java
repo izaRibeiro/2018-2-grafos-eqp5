@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;ahsuahsauhs
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -57,7 +57,10 @@ public class Menu {
 
     private static void getGrafo() {
         int continuarOp3 = 1;
-        Grafo grafo = getCriaGrafo();
+        if (grafo == null) {
+            Grafo grafo = getCriaGrafo();
+
+        }
 
         while (continuarOp3 == 1) {
 

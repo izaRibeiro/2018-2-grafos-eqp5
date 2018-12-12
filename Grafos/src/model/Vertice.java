@@ -17,6 +17,7 @@ public class Vertice {
     
      public Vertice(String id) {
         this.setNome(id);
+        this.relacionamento = new ArrayList<Aresta>();
        
     }
 

@@ -50,12 +50,11 @@ public class GrafoToDot {
     public static Grafo importaGrafoDot(String graphDot){
         Grafo grafo = new Grafo();
         Aresta aresta;
-     if(grafo.iseOrientado()){
-           graphDot = "Digraph ";
-           
-       }else{
-           graphDot = "Graph ";
-       }
+     if (graphDot.contains("digraph")) {
+            grafo.seteOrientado(true);
+        } else {
+            grafo.seteOrientado(false);
+        }
       int i;
         String aux, aux2;
         String[] arrayAux;
@@ -68,9 +67,6 @@ public class GrafoToDot {
         arrayAux = arrayGrafo[1].split(";\n ")[0].split(";\n");
 
         for (i = 0; i < arrayAux.length; i++) {
-            if (arrayAux[i].contains("@@")) {
-                arrayAux[i].replace(" ", "@@");
-            }
             grafo.adicionaVertice(arrayAux[i]);
         }
 
@@ -99,5 +95,4 @@ public class GrafoToDot {
         grafo.verificaTudo();
         return grafo;
     }
-    
 }

@@ -9,6 +9,7 @@ import java.util.Scanner;
  *
  * @author Iza Ribeiro
  */
+
 public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
@@ -18,6 +19,7 @@ public class Menu {
     /**
      * @param args the command line arguments
      */
+     static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
        
         int continuar = 0;
@@ -106,6 +108,26 @@ public class Menu {
                     File out = new File("out.png");
                     gv.writeGraphToFile(out);
                     break;
+                    case 10:
+                    Dijkstra dijkstra = new Dijkstra(grafo);
+                    System.out.println("# Dijkstra. Busca de menor caminho #");
+                    System.out.print("\nOrigem [0 até " + (grafo.ordem() - 1) + "]: ");
+                    String noRaiz = teclado.next();
+
+                    int i = dijkstra.getGrafo().getVerticeIndice(noRaiz);
+                    dijkstra.buscarCaminhos(dijkstra.getGrafo().getVertice(i));
+
+                    System.out.print("\nDestino [0 até " + (grafo.ordem() - 1) + "]: ");
+                    String noMenor = teclado.next();
+                    int j = dijkstra.getGrafo().getVerticeIndice("n" + noMenor);
+
+                    double menor = dijkstra.menorDistancia(dijkstra.getGrafo().getVertices().get(j));
+                    if (menor == Float.MAX_VALUE) {
+                        System.out.println("infinito");
+                    } else {
+                        System.out.println("O menor caminho é: " + Double.toString(menor));
+                    }
+                    break;
                 case 0:
                     continuarOp3 = 0;
                     break;
@@ -166,6 +188,8 @@ public class Menu {
         System.out.println("Informações a respeito do grafo - 7");
         System.out.println("Imprime NOVO - 8");
         System.out.println("Salvar Grafo - 9");
+        System.out.println("Algoritmo de Dijkstra - 10");
+        
 
         //System.out.println("Confere a existencia de uma aresta - 7");
         System.out.println("voltar menu principal - 0");

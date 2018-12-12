@@ -91,9 +91,9 @@ public class Grafo {
 
         for (i = 0; i < vertices.size(); i++) {
             for (j = 0; j < arestas.size(); j++) {
-                if (vertices.get(i).getId().equals(arestas.get(j).getInicio().getId())) {
+                if (vertices.get(i).equals(arestas.get(j).getInicio())) {
                     matrizIncidencia[i][j] = "1";
-                } else if (vertices.get(i).getId().equals(arestas.get(j).getFim().getId())) {
+                } else if (vertices.get(i).equals(arestas.get(j).getFim())) {
                     matrizIncidencia[i][j] = "-1";
                 } else {
                     matrizIncidencia[i][j] = "0";
@@ -116,12 +116,12 @@ public class Grafo {
         String aresta = "\t";
 
         for (j = 0; j < arestas.size(); j++) {
-            System.out.print("\tA" + (j + 1));
+            System.out.print("\tA" + (j + 1) +" "+ arestas.get(j).getPeso());
         }
 
         for (i = 0; i < vertices.size(); i++) {
             System.out.println("\n");
-            System.out.print("V" + (i + 1) + "\t");
+            System.out.print("V" + (i + 1)+" "+ vertices.get(i).getValor()+ "\t");
             for (j = 0; j < arestas.size(); j++) {
                 /*System.out.print(getMatrizIncidencia() + "\t");*/
                 System.out.print(getValorMatriz(i, j)+ "\t");
@@ -141,12 +141,12 @@ public class Grafo {
         String aresta = "\t";
 
         for (j = 0; j < arestas.size(); j++) {
-            System.out.print("\tA" + (j + 1));
+            System.out.print("\tA" + (j + 1) +" "+ arestas.get(j).getPeso());
         }
 
         for (i = 0; i < vertices.size(); i++) {
             System.out.println("\n");
-            System.out.print("V" + (i + 1) + "\t");
+            System.out.print("V" + (i + 1)+" "+ vertices.get(i).getValor()+ "\t");
             for (j = 0; j < arestas.size(); j++) {
                 /*System.out.print(getMatrizIncidencia() + "\t");*/
                 System.out.print(getValorMatriz(i, j)+ "\t");
@@ -164,12 +164,12 @@ public class Grafo {
         String aresta = "\t";
 
         for (j = 0; j < arestas.size(); j++) {
-            System.out.print("\tA" + (j + 1));
+            System.out.print("\tA" + (j + 1) +" "+ arestas.get(j).getPeso());
         }
 
         for (i = 0; i < vertices.size(); i++) {
             System.out.println("\n");
-            System.out.print("V" + (i + 1) + "\t");
+            System.out.print("V" + (i + 1)+" "+ vertices.get(i).getValor()+ "\t");
             for (j = 0; j < arestas.size(); j++) {
                 /*System.out.print(getMatrizIncidencia() + "\t");*/
                 System.out.print(getValorMatriz(i, j)+ "\t");

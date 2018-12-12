@@ -25,8 +25,10 @@ public class Menu {
     private static int opcao;
     private static int idv = 0;
     private static String nomeArquivo;
-    static Grafo grafo;
+    static Grafo grafo = getCriaGrafo();
     static boolean salvo;
+
+    static int criador = 0;
 
     /**
      * @param args the command line arguments
@@ -57,10 +59,6 @@ public class Menu {
 
     private static void getGrafo() {
         int continuarOp3 = 1;
-        if (grafo == null) {
-            Grafo grafo = getCriaGrafo();
-
-        }
 
         while (continuarOp3 == 1) {
 
@@ -80,17 +78,64 @@ public class Menu {
                     destino = scanner.nextInt();
                     id++;
 
-                    Aresta aresta = new Aresta(id + "", grafo.getVertice(origem), grafo.getVertice(destino));
+                               int opcaoValorada;
 
-                    grafo.adicionaAresta(aresta);
+                    System.out.println("Deseja tornar a aresta valorado? Sim[1] Nao[2]");
+                    opcaoValorada = scanner.nextInt();
+                     int valorAresta;
+
+                  if (opcaoValorada == 1) {
+                        idv++;
+                      
+
+                        System.out.println("Digite o valor da aresta ");
+                        valorAresta = scanner.nextInt();
+                        Aresta aresta = new Aresta(id + "", valorAresta, grafo.getVertice(origem), grafo.getVertice(destino));
+                        grafo.adicionaAresta(aresta);
+
+                    
+
+                    } else if (opcaoValorada == 2) {
+                        idv++;
+                 Aresta aresta = new Aresta(id + "", grafo.getVertice(origem), grafo.getVertice(destino));
+                        grafo.adicionaAresta(aresta);
+                        
+                     
+                    }  
+                    if(opcaoValorada != 1 && opcaoValorada != 2){
+                        System.out.println("ERROU!!! HAUHSAU");
+                    }
+            
                     break;
                 case 2:
 
-                    idv++;
-                    Vertice vertice = new Vertice(idv + "");
-                    System.out.println("e " + idv);
-                    System.out.println("Adicionar vértice");
-                    grafo.adicionaVertice(vertice);
+                    
+
+                    int opcaoValorado;
+
+                    System.out.println("Deseja tornar o vértice valorado? Sim[1] Nao[2]");
+                    opcaoValorado = scanner.nextInt();
+
+                    if (opcaoValorado == 1) {
+                        idv++;
+                        int valorVertice;
+
+                        System.out.println("Digite o valor do vértice: ");
+                        valorVertice = scanner.nextInt();
+                        Vertice vertice = new Vertice(Integer.toString(idv), valorVertice);
+                        grafo.adicionaVertice(vertice);
+
+                    } else if (opcaoValorado == 2) {
+                        idv++;
+                        Vertice vertice = new Vertice(idv + "");
+                        grafo.adicionaVertice(vertice);
+                        
+                     
+                    }  
+                    if(opcaoValorado != 1 && opcaoValorado != 2){
+                        System.out.println("ERROU!!! HAUHSAU");
+                    }
+
                     break;
                 case 3:
                     grafo.imprimirNaoOrientado();
@@ -237,7 +282,7 @@ public class Menu {
         System.out.println("Remover aresta - 5");
         System.out.println("Remover vértice - 6");
         System.out.println("Informações a respeito do grafo - 7");
-        System.out.println("Imprime NOVO - 8");
+        System.out.println("Imprime de acordo com o escolhido - 8");
         System.out.println("Salvar Grafo - 9");
         System.out.println("Algoritmo de Dijkstra - 10");
         System.out.println("Importar Grafo - 11");

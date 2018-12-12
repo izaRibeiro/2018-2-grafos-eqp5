@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class Vertice {
 
     private String id;
-    private double valor;
+    private int valor;
     ArrayList<Aresta> relacionamento;
 
 
-    public Vertice(String id, double valor) {
+    public Vertice(String id, int valor) {
         this.setNome(id);
         this.setValor(valor);
     }
@@ -41,11 +41,11 @@ public class Vertice {
         this.id = id;
     }
 
-    public double getValor() {
+    public int getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 

@@ -5,7 +5,7 @@ public class Aresta {
     private String id;
     private Vertice inicio;
     private Vertice fim;
-    private double peso;
+    private int peso;
     private boolean direcionado;
 
     public Aresta(String id, Vertice inicio, Vertice fim) {
@@ -19,13 +19,13 @@ public class Aresta {
         this.setArestaFim(fim);
     }
 
-    public Aresta(double peso, Vertice inicio, Vertice fim) {
+    public Aresta(int peso, Vertice inicio, Vertice fim) {
         this.setPeso(peso);
         this.setArestaInicio(inicio);
         this.setArestaFim(fim);
     }
 
-    public Aresta(String id, double peso, Vertice inicio, Vertice fim) {
+    public Aresta(String id, int peso, Vertice inicio, Vertice fim) {
         this.setId(id);
         this.setPeso(peso);
         this.setArestaInicio(inicio);
@@ -66,11 +66,11 @@ public class Aresta {
         this.inicio = inicio;
     }
 
-    public double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 

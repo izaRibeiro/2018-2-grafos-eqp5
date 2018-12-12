@@ -2,8 +2,18 @@ package model;
 
 import java.io.File;
 import edu.ifet.grafos.graphview.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -15,6 +25,9 @@ public class Menu {
     static Scanner scanner = new Scanner(System.in);
     private static int opcao;
     private static int idv = 0;
+        private static String nomeArquivo;
+        static  Grafo grafo;
+        static boolean salvo;
 
     /**
      * @param args the command line arguments
@@ -128,6 +141,40 @@ public class Menu {
                         System.out.println("O menor caminho é: " + Double.toString(menor));
                     }
                     break;
+                     case 11:
+                     JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter dotFilter = new FileNameExtensionFilter(
+                "dot files (*.dot)", "dot");
+        chooser.setFileFilter(dotFilter);
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                InputStream is = new FileInputStream(chooser.getSelectedFile().toString());
+                BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+                String line = buf.readLine();
+                StringBuilder sb = new StringBuilder();
+
+                while (line != null) {
+                    sb.append(line).append("\n");
+                    line = buf.readLine();
+                }
+
+                String graphDot = sb.toString();
+                System.out.println(graphDot);
+                Grafo grafo1 = GrafoToDot.importaGrafoDot(graphDot);
+                Menu.setGrafo(grafo1);
+                salvo = true;
+                nomeArquivo = chooser.getSelectedFile().toString();
+                if (nomeArquivo.contains(".dot")) {
+                    nomeArquivo = nomeArquivo.replace(".dot", "");
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                    break;
                 case 0:
                     continuarOp3 = 0;
                     break;
@@ -189,12 +236,16 @@ public class Menu {
         System.out.println("Imprime NOVO - 8");
         System.out.println("Salvar Grafo - 9");
         System.out.println("Algoritmo de Dijkstra - 10");
+        System.out.println("Importar Grafo - 11");
         
 
         //System.out.println("Confere a existencia de uma aresta - 7");
         System.out.println("voltar menu principal - 0");
         opGrafoMatrizIncidencia = scanner.nextInt();
         return opGrafoMatrizIncidencia;
+    }
+    static public void setGrafo(Grafo grafo) {
+        Menu.grafo = grafo;
     }
 
 }

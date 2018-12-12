@@ -216,7 +216,7 @@ public class Grafo {
     }
 
     public void removeVertice() {
-        System.out.printf("Digite o número da aresta que deseja remover: ");
+        System.out.printf("Digite o número do vértice que deseja remover: ");
         int aresta = scanner.nextInt();
         int aux = 0;
 
@@ -230,13 +230,32 @@ public class Grafo {
                     } else {
                         aux = 1;
                         vertices.remove(i);
-                        arestas.remove(j);
                     }
                 }
             }
 
         }
+        
+        
 
+    }
+    
+    
+    public void verificaAresta(){
+        int aux = 0;
+                for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < arestas.size(); j++) {
+                if (j != 0) {
+                        aux++;
+                }
+                
+  
+            }
+                 if(aux < 2){
+                    arestas.remove(i);
+                }
+        }
+  
     }
 
     public void adicionaAresta(Aresta a) {
@@ -343,6 +362,8 @@ public Vertice adicionaVertice(String nome) {
     }
     
     public  void getInfo() {
+        
+        System.out.println("Nome: "+getId() );
 
         System.out.println("Grafo de ordem: " + ordem());
 

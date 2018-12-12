@@ -19,22 +19,22 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Iza Ribeiro
  */
-
 public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
     private static int opcao;
     private static int idv = 0;
-        private static String nomeArquivo;
-        static  Grafo grafo;
-        static boolean salvo;
+    private static String nomeArquivo;
+    static Grafo grafo;
+    static boolean salvo;
 
     /**
      * @param args the command line arguments
      */
-     static Scanner teclado = new Scanner(System.in);
+    static Scanner teclado = new Scanner(System.in);
+
     public static void main(String[] args) {
-       
+
         int continuar = 0;
 
         while (continuar == 0) {
@@ -76,16 +76,16 @@ public class Menu {
                     System.out.println("Digite o vértice de destino");
                     destino = scanner.nextInt();
                     id++;
-                    
+
                     Aresta aresta = new Aresta(id + "", grafo.getVertice(origem), grafo.getVertice(destino));
 
                     grafo.adicionaAresta(aresta);
                     break;
                 case 2:
-          
+
                     idv++;
                     Vertice vertice = new Vertice(idv + "");
-                    System.out.println("e " +idv);
+                    System.out.println("e " + idv);
                     System.out.println("Adicionar vértice");
                     grafo.adicionaVertice(vertice);
                     break;
@@ -103,7 +103,8 @@ public class Menu {
                     break;
 
                 case 7:
-                  grafo.getInfo();
+                    grafo.grau();
+                    grafo.getInfo();
 
                     break;
                 case 8:
@@ -116,12 +117,12 @@ public class Menu {
 //Lendo a String 
                     gv.readString(g);
 //Imprimindo a grafo em texto
-                     System.out.println(gv.getDotSource());
+                    System.out.println(gv.getDotSource());
 //Gerando uma imagem com o nome out.png 
                     File out = new File("out.png");
                     gv.writeGraphToFile(out);
                     break;
-                    case 10:
+                case 10:
                     Dijkstra dijkstra = new Dijkstra(grafo);
                     System.out.println("# Dijkstra. Busca de menor caminho #");
                     System.out.print("\nOrigem [0 até " + (grafo.ordem() - 1) + "]: ");
@@ -141,39 +142,39 @@ public class Menu {
                         System.out.println("O menor caminho é: " + Double.toString(menor));
                     }
                     break;
-                     case 11:
-                     JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter dotFilter = new FileNameExtensionFilter(
-                "dot files (*.dot)", "dot");
-        chooser.setFileFilter(dotFilter);
-        int retrival = chooser.showSaveDialog(null);
-        if (retrival == JFileChooser.APPROVE_OPTION) {
-            try {
-                InputStream is = new FileInputStream(chooser.getSelectedFile().toString());
-                BufferedReader buf = new BufferedReader(new InputStreamReader(is));
-                String line = buf.readLine();
-                StringBuilder sb = new StringBuilder();
+                case 11:
+                    JFileChooser chooser = new JFileChooser();
+                    FileNameExtensionFilter dotFilter = new FileNameExtensionFilter(
+                            "dot files (*.dot)", "dot");
+                    chooser.setFileFilter(dotFilter);
+                    int retrival = chooser.showSaveDialog(null);
+                    if (retrival == JFileChooser.APPROVE_OPTION) {
+                        try {
+                            InputStream is = new FileInputStream(chooser.getSelectedFile().toString());
+                            BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+                            String line = buf.readLine();
+                            StringBuilder sb = new StringBuilder();
 
-                while (line != null) {
-                    sb.append(line).append("\n");
-                    line = buf.readLine();
-                }
+                            while (line != null) {
+                                sb.append(line).append("\n");
+                                line = buf.readLine();
+                            }
 
-                String graphDot = sb.toString();
-                System.out.println(graphDot);
-                Grafo grafo1 = GrafoToDot.importaGrafoDot(graphDot);
-                Menu.setGrafo(grafo1);
-                salvo = true;
-                nomeArquivo = chooser.getSelectedFile().toString();
-                if (nomeArquivo.contains(".dot")) {
-                    nomeArquivo = nomeArquivo.replace(".dot", "");
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+                            String graphDot = sb.toString();
+                            System.out.println(graphDot);
+                            Grafo grafo1 = GrafoToDot.importaGrafoDot(graphDot);
+                            Menu.setGrafo(grafo1);
+                            salvo = true;
+                            nomeArquivo = chooser.getSelectedFile().toString();
+                            if (nomeArquivo.contains(".dot")) {
+                                nomeArquivo = nomeArquivo.replace(".dot", "");
+                            }
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                     break;
                 case 0:
                     continuarOp3 = 0;
@@ -181,14 +182,14 @@ public class Menu {
                 default:
                     System.err.println("Essa opção não existe");
                     break;
-                    //esta opção não existe
+                //esta opção não existe
             }
         }
     }
 
     // Função MENU PRINCIPAL!!
     private static void getMenu() {
-        
+
         System.out.println("Cria Grafo - 1");
 
         System.out.println("Informe opção:");
@@ -237,13 +238,13 @@ public class Menu {
         System.out.println("Salvar Grafo - 9");
         System.out.println("Algoritmo de Dijkstra - 10");
         System.out.println("Importar Grafo - 11");
-        
 
         //System.out.println("Confere a existencia de uma aresta - 7");
         System.out.println("voltar menu principal - 0");
         opGrafoMatrizIncidencia = scanner.nextInt();
         return opGrafoMatrizIncidencia;
     }
+
     static public void setGrafo(Grafo grafo) {
         Menu.grafo = grafo;
     }

@@ -272,7 +272,7 @@ public Vertice adicionaVertice(String nome) {
                     aux++;
                 }
             }
-            System.out.println(vertice.getId() + " Grau: " + aux);
+            System.out.println("Vertice: "+ vertice.getId() + " Grau: " + aux);
         }
     }
 
@@ -300,20 +300,16 @@ public Vertice adicionaVertice(String nome) {
                 grau = grauVertice(vertice);
 
             } else if (grau != grauVertice(vertice)) {
-                System.out.println("Não é regular");
                 return 0;
             }
 
         }
-        System.out.println("É regular");
 
         return grau;
     }
 
-    /**
-     *
-     * @return ordem do grafo
-     */
+ 
+    
     public int isCompleto() {
         if (isRegular() == ordem() - 1) {
             return ordem();
@@ -348,20 +344,25 @@ public Vertice adicionaVertice(String nome) {
     
     public  void getInfo() {
 
-        System.out.print("------------------------\n");
         System.out.println("Grafo de ordem: " + ordem());
 
         
         System.out.printf("Quantidade de Vertices: %d\n", vertices.size());
         System.out.printf("Quantidade de arestas: %d\n", arestas.size());
 
-        if (isCompleto() == 1) {
-            System.out.println("É completo");
-
+           if (isRegular() > 0) {
+            System.out.println("Grafo Regular");
         } else {
-            System.out.println("Não é completo");
-
+            System.out.println("Grafo não é regular");
         }
+           
+        int ordemGrafo = isCompleto();
+        if (ordemGrafo > 0) {
+            System.out.println("Grafo Completo K" + ordemGrafo);
+        } else {
+            System.out.println("Grafo não é completo");
+        }
+        
         System.out.println("------------------------\n");
     }
     

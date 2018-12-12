@@ -91,9 +91,9 @@ public class Grafo {
 
         for (i = 0; i < vertices.size(); i++) {
             for (j = 0; j < arestas.size(); j++) {
-                if (vertices.get(i).equals(arestas.get(j).getInicio())) {
+                if (vertices.get(i).getId().equals(arestas.get(j).getInicio().getId())) {
                     matrizIncidencia[i][j] = "1";
-                } else if (vertices.get(i).equals(arestas.get(j).getFim())) {
+                } else if (vertices.get(i).getId().equals(arestas.get(j).getFim().getId())) {
                     matrizIncidencia[i][j] = "-1";
                 } else {
                     matrizIncidencia[i][j] = "0";

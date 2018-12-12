@@ -399,5 +399,30 @@ public class Grafo {
     public void seteOrientado(boolean eOrientado) {
         this.eOrientado = eOrientado;
     }
-
+ public int getVerticeIndice(String id) {
+        for (int i = 0; i < this.vertices.size(); i++) {
+            if (id.equals(this.vertices.get(i).getId())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+ public boolean isAdjacente(Vertice no1, Vertice no2) {
+        for (int i = 0; i < this.arestas.size(); i++) {
+                if (this.arestas.get(i).getInicio().getId().equals(no1.getId()) && this.arestas.get(i).getFim().getId().equals(no2.getId())
+                        || this.arestas.get(i).getInicio().getId().equals(no2.getId()) && this.arestas.get(i).getFim().getId().equals(no1.getId())) {
+                    return true;
+                }
+        }
+        return false;
+    }
+  public ArrayList<Vertice> getVerticeAdjacentes(Vertice no1) {
+        ArrayList<Vertice> adjacentes = new ArrayList<>();
+        for (int i = 0; i < this.getVertices().size(); i++) {
+            if (this.isAdjacente(no1, this.getVertices().get(i))) {
+                adjacentes.add(this.getVertices().get(i));
+            }
+        }
+        return adjacentes;
+    }
 }

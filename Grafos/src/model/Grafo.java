@@ -11,6 +11,7 @@ public class Grafo {
     private ArrayList<Vertice> vertices;
     private ArrayList<Aresta> arestas;
     private boolean regular = false;
+    private boolean valorado = false;
     
     String[][] matrizIncidencia;
     String[][] matrizaux;
@@ -241,7 +242,11 @@ public class Grafo {
     public void adicionaAresta(Aresta a) {
         arestas.add(a);
     }
-
+public Vertice adicionaVertice(String nome) {
+        Vertice vertice = new Vertice(nome);
+        vertices.add(vertice);
+        return vertice;
+    }
     public void adicionaVertice(Vertice v) {
         vertices.add(v);
     }
@@ -424,5 +429,23 @@ public class Grafo {
             }
         }
         return adjacentes;
+    }
+  public void verificaTudo() {
+        setValorado();
+        setRegular();
+    }
+  public void setValorado() {
+        if (arestas.size() > 0) {
+            for (int i = 0; i < arestas.size(); i++) {
+                if (arestas.get(i).getPeso() == 0) {
+                    this.valorado = false;
+                    return;
+                }
+            }
+            this.valorado = true;
+        } else {
+            this.valorado = false;
+        }
+
     }
 }
